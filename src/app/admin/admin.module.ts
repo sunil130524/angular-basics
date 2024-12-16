@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 //Containers
 import { DonutListComponent } from './containers/donut-list/donut-list.component';
@@ -19,7 +20,8 @@ import { DonutFormComponent } from './components/donut-form/donut-form.component
     DonutFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     DonutListComponent,
