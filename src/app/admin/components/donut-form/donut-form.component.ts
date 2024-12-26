@@ -5,7 +5,7 @@ import { Donut } from '../../models/donut.model';
 @Component({
   selector: 'app-donut-form',
   template: `
-    <form class="donut-form" (ngSubmit)="handleSubmit(donutForm)" #donutForm="ngForm">
+    <form class="donut-form" #donutForm="ngForm">
       <label>
         <span>Name</span>
         <input type="text" class="input" required minlength="3" name="name" [ngModel]="donut.name" [ngModelOptions]="{updateOn: 'blur'}" #nameInput="ngModel" />
@@ -57,7 +57,9 @@ import { Donut } from '../../models/donut.model';
         </ng-container>
       </label>
 
-      <button type="submit" class="btn btn--green">Create</button>
+      <button type="button" class="btn btn--green" (click)="handleCreate(donutForm)">Create</button>
+      <button type="button" class="btn btn--green" (click)="handleUpdate(donutForm)">Update</button>
+      <button type="button" class="btn btn--green" (click)="handleDelete()">Delete</button>
       <button type="button" class="btn btn--grey" (click)="donutForm.resetForm()">Reset Form</button>
 
       <div class="donut-form-spinner" *ngIf="donutForm.valid && donutForm.submitted">
@@ -102,6 +104,8 @@ export class DonutFormComponent {
   @Input() donut! : Donut;
 
   @Output() createForm = new EventEmitter<Donut>();
+  @Output() updateForm = new EventEmitter<Donut>();
+  @Output() deleteForm = new EventEmitter<Donut>();
 
   icons: string[] = [
     'caramel-swirl',
@@ -113,12 +117,29 @@ export class DonutFormComponent {
     'zesty-lemon',
   ];
 
-  handleSubmit(form: NgForm) {
+  handleCreate(form: NgForm) {
     if(form.invalid) {
       form.form.markAllAsTouched();
       return;
     }
     this.createForm.emit(form.value);
+  }
+
+  handleUpdate(form: NgForm) {
+    if(form.invalid) {
+      form.form.markAllAsTouched();
+      return;
+    }
+    this.updateForm.emit({
+      id: this.donut.id,
+      ...form.value
+    });
+  }
+
+  handleDelete() {
+    if(confirm(`Do you really want to delete ${this.donut.name}`)) {
+      this.deleteForm.emit(this.donut);
+    }
   }
 
 }
