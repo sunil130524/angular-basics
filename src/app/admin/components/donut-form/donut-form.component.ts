@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Donut } from '../../models/donut.model';
+import { NgForOf, NgIf } from '@angular/common';
 
 @Component({
+  standalone: true,
+  imports: [FormsModule, NgIf, NgForOf],
   selector: 'app-donut-form',
   template: `
     <form class="donut-form" #donutForm="ngForm" *ngIf="donut; else loading">
@@ -66,7 +69,6 @@ import { Donut } from '../../models/donut.model';
         Spinner...
       </div>
 
-      <pre>{{donutForm.value | json}}</pre>
     </form>
     <ng-template #loading>
       Loading...

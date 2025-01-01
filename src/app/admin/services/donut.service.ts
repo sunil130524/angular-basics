@@ -3,9 +3,7 @@ import { Donut } from '../models/donut.model';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, delay, filter, map, Observable, of, retry, retryWhen, take, tap, throwError } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class DonutService {
   private donuts: Donut[] = [];
 
