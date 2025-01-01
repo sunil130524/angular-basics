@@ -38,7 +38,7 @@ export class DonutService {
     );
   }
 
-  readById(id: string): Observable<Donut> {
+  readById(id: string | null): Observable<Donut> {
     return this.read().pipe(
       map((donuts) => {
         const donut = donuts.find((donut) => donut.id === id);

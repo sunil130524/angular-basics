@@ -5,10 +5,11 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="app">
       <header class="header">
-        <img src="/assets/img/logo.svg" alt="Ultimate Donuts" class="logo" />
+        <a [routerLink]="['admin', 'donuts']">
+          <img src="/assets/img/logo.svg" alt="Ultimate Donuts" class="logo" />
+        </a>
       </header>
-      <!-- <app-donut-list></app-donut-list> -->
-      <app-donut-single></app-donut-single>
+      <router-outlet></router-outlet>
     </div>
   `,
   styles: [
