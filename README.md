@@ -1,6 +1,8 @@
+<h1>[Complete]</h1>
+
 <h1 align="center">
 <img width="40" valign="bottom" src="https://ultimatecourses.com/static/icons/angular.svg">
-Angular Basics v15: Starter Project
+Angular Basics v15: Donuts [Complete]
 </h1>
 <h4 align="center">Starter project for the Ultimate Courses <a href="https://ultimatecourses.com/learn/angular-basics" target="_blank">Angular Basics course</a>.</h4>
 
